@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="20dp"
         app:max="100"
         app:ringColor="@color/colorPrimaryDark"
         app:ringProgressColor="@color/colorAccent"

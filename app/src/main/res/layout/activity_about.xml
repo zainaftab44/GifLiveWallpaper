@@ -8,7 +8,70 @@
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="TECHNOSOLZ"
+            android:textColor="@color/btn_settings_pressed"
+            android:textSize="15pt"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/description"
+            android:textColor="@color/colorAccent"
+            android:textSize="12pt" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_fb"
+                android:layout_width="@dimen/btn_social_w"
+                android:layout_height="@dimen/btn_social_h"
+                android:background="@null"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/btn_tw"
+                android:layout_width="@dimen/btn_social_w"
+                android:layout_height="@dimen/btn_social_h"
+                android:background="@null"
+                android:src="@drawable/twitter" />
+
+            <ImageButton
+                android:id="@+id/btn_gp"
+                android:layout_width="@dimen/btn_social_w"
+                android:layout_height="@dimen/btn_social_h"
+                android:background="@null"
+                android:src="@drawable/gplus" />
+
+            <ImageButton
+                android:id="@+id/btn_in"
+                android:layout_width="@dimen/btn_social_w"
+                android:layout_height="@dimen/btn_social_h"
+                android:background="@null"
+                android:src="@drawable/linkedin" />
+        </LinearLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"

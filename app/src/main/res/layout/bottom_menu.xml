@@ -16,12 +16,10 @@
             android:layout_weight="0.2"
             android:background="@drawable/btn_bottom_menu"
             android:drawablePadding="8dp"
-            android:drawableTint="@android:color/white"
             android:drawableTop="@drawable/apply"
-            android:foregroundTint="@android:color/white"
             android:paddingBottom="5dp"
             android:paddingTop="10dp"
-            android:text="apply"
+            android:text="@string/apply"
             android:textColor="@android:color/white" />
 
         <Button
@@ -31,12 +29,10 @@
             android:layout_weight="0.2"
             android:background="@drawable/btn_bottom_menu"
             android:drawablePadding="8dp"
-            android:drawableTint="@android:color/white"
             android:drawableTop="@drawable/back"
-            android:foregroundTint="@android:color/white"
             android:paddingBottom="5dp"
             android:paddingTop="10dp"
-            android:text="back"
+            android:text="@string/back"
             android:textColor="@android:color/white"
             android:visibility="gone" />
 
@@ -47,12 +43,10 @@
             android:layout_weight="0.2"
             android:background="@drawable/btn_bottom_menu"
             android:drawablePadding="8dp"
-            android:drawableTint="@android:color/white"
             android:drawableTop="@drawable/settings"
-            android:foregroundTint="@android:color/white"
             android:paddingBottom="5dp"
             android:paddingTop="10dp"
-            android:text="Settings"
+            android:text="@string/settings"
             android:textColor="@android:color/white" />
 
         <Button
@@ -62,12 +56,10 @@
             android:layout_weight="0.2"
             android:background="@drawable/btn_bottom_menu"
             android:drawablePadding="8dp"
-            android:drawableTint="@android:color/white"
             android:drawableTop="@drawable/feedback"
-            android:foregroundTint="@android:color/white"
             android:paddingBottom="5dp"
             android:paddingTop="10dp"
-            android:text="Feedback"
+            android:text="@string/feedback"
             android:textColor="@android:color/white" />
 
         <Button
@@ -77,12 +69,10 @@
             android:layout_weight="0.2"
             android:background="@drawable/btn_bottom_menu"
             android:drawablePadding="8dp"
-            android:drawableTint="@android:color/white"
             android:drawableTop="@drawable/about"
-            android:foregroundTint="@android:color/white"
             android:paddingBottom="5dp"
             android:paddingTop="10dp"
-            android:text="about"
+            android:text="@string/about"
             android:textColor="@android:color/white" />
 
         <Button
@@ -92,12 +82,10 @@
             android:layout_weight="0.2"
             android:background="@drawable/btn_bottom_menu"
             android:drawablePadding="8dp"
-            android:drawableTint="@android:color/white"
             android:drawableTop="@drawable/more"
-            android:foregroundTint="@android:color/white"
             android:paddingBottom="5dp"
             android:paddingTop="10dp"
-            android:text="more"
+            android:text="@string/more"
             android:textColor="@android:color/white" />
     </LinearLayout>
 </FrameLayout>

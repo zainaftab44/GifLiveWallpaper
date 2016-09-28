@@ -33,7 +33,8 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SplashScreenActivity">
+        <activity android:name=".Activities.SplashScreenActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,15 +43,12 @@
         </activity>
         <activity
             android:name=".Activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".Activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.blogspot.toppersdaily.technosolz.livewallpaper.Activities.MainActivity" />
+            android:label="@string/title_activity_settings">
         </activity>
-        <activity android:name=".Activities.AboutActivity" />
-        <activity android:name=".Activities.MoreActivity"></activity>
+        <activity android:name=".Activities.AboutActivity"
+            android:label="@string/title_activity_about"/>
+        <activity android:name=".Activities.MoreActivity"
+            android:label="@string/title_activity_more"></activity>
     </application>
 
 </manifest>

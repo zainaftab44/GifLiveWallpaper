@@ -28,4 +28,7 @@ public class Constants {
     public static final String more_apps_5 = "";
     public static final String more_apps_6 = "";
 
+    public static final String txtSpeed = "speed";
+    public static final String txtScale = "scale";
+    public static final String txtFirst = "first";
 }

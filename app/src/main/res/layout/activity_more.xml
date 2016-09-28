@@ -5,10 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MoreActivity">
 
+
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:scaleType="fitXY" />
 
     <LinearLayout
         android:id="@+id/ll3"
@@ -19,13 +22,13 @@
 
         <ImageButton
             android:id="@+id/btn_more_5"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:layout_width="@dimen/more_width"
+            android:layout_height="@dimen/more_height" />
 
         <ImageButton
             android:id="@+id/btn_more_6"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:layout_width="@dimen/more_width"
+            android:layout_height="@dimen/more_height" />
     </LinearLayout>
 
     <LinearLayout
@@ -38,13 +41,13 @@
 
         <ImageButton
             android:id="@+id/btn_more_1"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:layout_width="@dimen/more_width"
+            android:layout_height="@dimen/more_height" />
 
         <ImageButton
             android:id="@+id/btn_more_2"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:layout_width="@dimen/more_width"
+            android:layout_height="@dimen/more_height" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,13 +60,13 @@
 
         <ImageButton
             android:id="@+id/btn_more_3"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:layout_width="@dimen/more_width"
+            android:layout_height="@dimen/more_height" />
 
         <ImageButton
             android:id="@+id/btn_more_4"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:layout_width="@dimen/more_width"
+            android:layout_height="@dimen/more_height" />
     </LinearLayout>
 
     <RelativeLayout
