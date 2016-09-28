@@ -5,4 +5,10 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="black_overlay">#66000000</color>
+    <color name="bottom_menu">#673AB7</color>
+    <color name="btn_bottom_menu">#009688</color>
+    <color name="btn_bottom_menu_pressed">#6200EA</color>
+    <color name="btn_bottom_menu_normal">#2962FF</color>
+    <color name="btn_settings_pressed">#004D40</color>
+    <color name="btn_settings_normal">#009688</color>
 </resources>

@@ -1,10 +1,44 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
-    android:fitsSystemWindows="true"
+    android:background="@drawable/splash"
+    android:padding="@dimen/activity_vertical_margin"
     tools:context=".Activities.SplashScreenActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="TECHNOSOLZ"
+        android:textColor="@color/colorAccent"
+        android:textSize="15pt"
+        android:textStyle="bold" />
 
-</FrameLayout>
+
+    <io.netopen.hotbitmapgg.library.view.RingProgressBar
+        android:id="@+id/animate_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        app:max="100"
+        app:ringColor="@color/colorPrimaryDark"
+        app:ringProgressColor="@color/colorAccent"
+        app:ringWidth="3dp"
+        app:style="FILL"
+        app:textColor="@color/colorAccent"
+        app:textIsShow="true"
+        app:textSize="16sp" />
+
+   <!-- <com.daasuu.ahp.AnimateHorizontalProgressBar
+        android:id="@+id/animate_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:ahp_backgroundColor="@color/colorPrimaryDark"
+        app:ahp_progressColor="@color/colorAccent" />-->
+</RelativeLayout>

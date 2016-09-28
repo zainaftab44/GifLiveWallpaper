@@ -19,17 +19,16 @@ import java.io.IOException;
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
-public class MainActivity extends AppCompatActivity {
-
-    //    private Swipe swipe;
-    private GifImageView GifView;
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_about);
         Variables.setContext(this);
 
+
+        GifImageView GifView;
         GifView = (GifImageView) findViewById(R.id.gifImage);
         //asset file
         try {
@@ -39,53 +38,16 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-/*
-//for multiple wallpapers
-        swipe = new Swipe();
-        swipe.addListener(new SwipeListener() {
-            @Override
-            public void onSwipingLeft(final MotionEvent event) {
-            }
-
-            @Override
-            public void onSwipedLeft(final MotionEvent event) {
-                //TODO: add swipe left code
-            }
-
-            @Override
-            public void onSwipingRight(final MotionEvent event) {
-            }
-
-            @Override
-            public void onSwipedRight(final MotionEvent event) {
-                //TODO: add swipe right code
-            }
-
-            @Override
-            public void onSwipingUp(final MotionEvent event) {
-            }
-
-            @Override
-            public void onSwipedUp(final MotionEvent event) {
-            }
-
-            @Override
-            public void onSwipingDown(final MotionEvent event) {
-            }
-
-            @Override
-            public void onSwipedDown(final MotionEvent event) {
-            }
-        });
-  */
-
         View.OnClickListener clicked = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClick(v);
             }
         };
-        Button btn1 = (Button) findViewById(R.id.btn_apply);
+        Button btn = (Button) findViewById(R.id.btn_apply);
+        btn.setVisibility(View.GONE);
+        Button btn1 = (Button) findViewById(R.id.btn_back);
+        btn1.setVisibility(View.VISIBLE);
         btn1.setOnClickListener(clicked);
         Button btn2 = (Button) findViewById(R.id.btn_settings);
         btn2.setOnClickListener(clicked);
@@ -95,43 +57,29 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(clicked);
         Button btn5 = (Button) findViewById(R.id.btn_more);
         btn5.setOnClickListener(clicked);
+
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_apply:
-                Intent intent = new Intent(
-                        WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
-                intent.putExtra(
-                        WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
-                        new ComponentName(this, GIFWallpaperService.class));
-                MainActivity.this.startActivity(intent);
+            case R.id.btn_back:
+                startActivity(new Intent(this, MainActivity.class));
+                AboutActivity.this.finish();
                 break;
             case R.id.btn_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
-                MainActivity.this.finish();
+                AboutActivity.this.finish();
                 break;
             case R.id.btn_feedback:
                 startActivity(new Intent(Intent.ACTION_VIEW,
                         Uri.parse(Constants.market_uri + Constants.app_id)));
                 break;
-            case R.id.btn_about:
-                startActivity(new Intent(this, AboutActivity.class));
-                MainActivity.this.finish();
-                break;
             case R.id.btn_more:
                 startActivity(new Intent(this, MoreActivity.class));
-                MainActivity.this.finish();
+                AboutActivity.this.finish();
                 break;
 
         }
     }
 
-   /*
-   //for multiple wallpapers
-@Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        swipe.dispatchTouchEvent(event);
-        return super.dispatchTouchEvent(event);
-    }*/
 }
