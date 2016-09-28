@@ -2,6 +2,9 @@ package com.blogspot.toppersdaily.technosolz.livewallpaper.Globals;
 
 import android.content.Context;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import pl.droidsonroids.gif.GifDrawable;
 
 /**
@@ -17,5 +20,19 @@ public class Variables {
     public static void setContext(Context context) {
         Variables.context = context;
     }
+
     public static GifDrawable image;
+
+    //For admob interstitial
+    public static InterstitialAd mInterstitialAd;
+
+    // For loading admob interstitials
+    public static void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+    }
+
+
 }

@@ -103,8 +103,8 @@ public class MoreActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Variables.requestNewInterstitial();
                 startActivity(new Intent(MoreActivity.this, MainActivity.class));
-//                Variables.image.recycle();
                 Variables.image = null;
                 MoreActivity.this.finish();
             }
@@ -113,8 +113,8 @@ public class MoreActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Variables.requestNewInterstitial();
                 startActivity(new Intent(MoreActivity.this, SettingsActivity.class));
-//                Variables.image.recycle();
                 Variables.image = null;
                 MoreActivity.this.finish();
             }
@@ -132,7 +132,6 @@ public class MoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MoreActivity.this, AboutActivity.class));
-//                Variables.image.recycle();
                 Variables.image = null;
                 MoreActivity.this.finish();
             }

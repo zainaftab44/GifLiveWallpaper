@@ -43,8 +43,8 @@ public class AboutActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Variables.requestNewInterstitial();
                 startActivity(new Intent(AboutActivity.this, MainActivity.class));
-//                Variables.image.recycle();
                 Variables.image = null;
                 AboutActivity.this.finish();
             }
@@ -53,12 +53,13 @@ public class AboutActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Variables.requestNewInterstitial();
                 startActivity(new Intent(AboutActivity.this, SettingsActivity.class));
-//                Variables.image.recycle();
                 Variables.image = null;
                 AboutActivity.this.finish();
             }
         });
+
         Button btn3 = (Button) findViewById(R.id.btn_feedback);
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,8 +75,8 @@ public class AboutActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Variables.requestNewInterstitial();
                 startActivity(new Intent(AboutActivity.this, MoreActivity.class));
-//                Variables.image.recycle();
                 Variables.image = null;
                 AboutActivity.this.finish();
             }

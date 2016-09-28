@@ -31,4 +31,6 @@ public class Constants {
     public static final String txtSpeed = "speed";
     public static final String txtScale = "scale";
     public static final String txtFirst = "first";
+    public static final String scaleX = "scaleX";
+    public static final String scaleY = "scaleY";
 }
