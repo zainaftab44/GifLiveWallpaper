@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
@@ -44,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
         prefs = new EncryptedPreferences.Builder(this).withEncryptionPassword(Functions.generateKey(this)).build();
         context = this;
         GifView = (GifImageView) findViewById(R.id.gifImage);
+
+
+        // Custom action bar for center title
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.title_main_activity);
 
 
         //asset file
@@ -119,18 +125,18 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(Constants.market_uri + Constants.app_id)));
+                startActivity(new Intent(context, FeedbackActivity.class));
+                Variables.image = null;
+                MainActivity.this.finish();
             }
         });
 
-        Button btn4 = (Button) findViewById(R.id.btn_about);
+        Button btn4 = (Button) findViewById(R.id.btn_review);
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(context, AboutActivity.class));
-                Variables.image = null;
-                MainActivity.this.finish();
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(Constants.market_uri + Constants.app_id)));
             }
         });
 

@@ -3,6 +3,7 @@ package com.blogspot.toppersdaily.technosolz.livewallpaper.Activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,12 @@ public class MoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
         Variables.setContext(this);
+
+        // Custom action bar for center title
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.title_remaining_activities);
+
+
         GifImageView GifView;
 
         GifView = (GifImageView) findViewById(R.id.gifImage);
@@ -103,10 +110,7 @@ public class MoreActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Variables.requestNewInterstitial();
-                startActivity(new Intent(MoreActivity.this, MainActivity.class));
-                Variables.image = null;
-                MoreActivity.this.finish();
+               go_back();
             }
         });
         Button btn2 = (Button) findViewById(R.id.btn_settings);
@@ -131,7 +135,7 @@ public class MoreActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MoreActivity.this, AboutActivity.class));
+                startActivity(new Intent(MoreActivity.this, FeedbackActivity.class));
                 Variables.image = null;
                 MoreActivity.this.finish();
             }
@@ -139,6 +143,12 @@ public class MoreActivity extends AppCompatActivity {
 
         Button btn5 = (Button) findViewById(R.id.btn_more);
         btn5.setPressed(true);
+    }
+    public void go_back() {
+        Variables.requestNewInterstitial();
+        startActivity(new Intent(MoreActivity.this, MainActivity.class));
+        Variables.image = null;
+        MoreActivity.this.finish();
     }
 
 }

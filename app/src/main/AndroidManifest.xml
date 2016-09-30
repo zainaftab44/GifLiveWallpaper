@@ -46,7 +46,7 @@
             android:name=".Activities.SettingsActivity"
             android:label="@string/title_activity_settings">
         </activity>
-        <activity android:name=".Activities.AboutActivity"
+        <activity android:name=".Activities.FeedbackActivity"
             android:label="@string/title_activity_about"/>
         <activity android:name=".Activities.MoreActivity"
             android:label="@string/title_activity_more"></activity>

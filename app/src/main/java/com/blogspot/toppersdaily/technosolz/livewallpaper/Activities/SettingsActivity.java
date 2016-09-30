@@ -58,31 +58,30 @@ public class SettingsActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Variables.requestNewInterstitial();
-                startActivity(new Intent(SettingsActivity.this, MainActivity.class));
-                Variables.image = null;
-                SettingsActivity.this.finish();
+               go_back();
             }
         });
 
         Button btn2 = (Button) findViewById(R.id.btn_settings);
         btn2.setPressed(true);
 
+
         Button btn3 = (Button) findViewById(R.id.btn_feedback);
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(Constants.market_uri + Constants.app_id)));
+                startActivity(new Intent(SettingsActivity.this, FeedbackActivity.class));
+                Variables.image = null;
+                SettingsActivity.this.finish();
             }
         });
-        Button btn4 = (Button) findViewById(R.id.btn_about);
+
+        Button btn4 = (Button) findViewById(R.id.btn_review);
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SettingsActivity.this, AboutActivity.class));
-                Variables.image = null;
-                SettingsActivity.this.finish();
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(Constants.market_uri + Constants.app_id)));
             }
         });
 
@@ -98,7 +97,12 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
     }
-
+    public void go_back() {
+	 Variables.requestNewInterstitial();
+                startActivity(new Intent(SettingsActivity.this, MainActivity.class));
+                Variables.image = null;
+                SettingsActivity.this.finish();
+}
     public void changeScale(View v) {
         // do something
         final Dialog dialog = new Dialog(this);
@@ -206,7 +210,7 @@ public class SettingsActivity extends AppCompatActivity {
                         Uri.parse(Constants.market_uri + Constants.app_id)));
                 break;
             case R.id.btn_about:
-                startActivity(new Intent(this, AboutActivity.class));
+                startActivity(new Intent(this, FeedbackActivity.class));
                 SettingsActivity.this.finish();
                 break;
             case R.id.btn_more:

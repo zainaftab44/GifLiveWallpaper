@@ -33,8 +33,7 @@ dependencies {
     //    for secure sharedpreferences
     compile 'com.pddstudio:encrypted-preferences:1.2.0'
     //for more activity
-    //    compile 'link.fls:swipestack:0.3.0'
     compile 'com.github.HotBitmapGG:RingProgressBar:V1.2.2'
 //    compile 'com.daasuu:animateHorizontalProgressBar:0.2.4'
-    compile 'com.afollestad.material-dialogs:core:0.9.0.2'
+    compile 'com.github.pwittchen:swipe:0.0.1'
 }

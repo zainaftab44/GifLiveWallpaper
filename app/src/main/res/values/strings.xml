@@ -10,14 +10,35 @@
     <string name="description">We are working to improve the user experience and develop innovative applications for our clients. \n If you like this application don\'t forget to share with your friends and like our facebook page to remain updated with our latest apps.</string>
 
     <!-- Bottom menu buttons-->
-    <string name="settings">SETTINGS</string>
-    <string name="apply">APPLY</string>
-    <string name="back">BACK</string>
-    <string name="feedback">FEEDBACK</string>
-    <string name="about">ABOUT</string>
-    <string name="more">MORE</string>
+    <string name="settings">Settings</string>
+    <string name="apply">Apply</string>
+    <string name="back">Back</string>
+    <string name="feedback">Feedback</string>
+    <string name="about">About</string>
+    <string name="more">More</string>
+    <string name="review">Review</string>
 
     <!-- Settings Activity Buttons -->
     <string name="speed">Speed</string>
     <string name="scale">Scale</string>
+
+
+    <!-- Buttons text for feedback Activity -->
+    <string name="feedback_button_website">NovemberApps.com</string>
+    <string name="feedback_button_facebook">Our Facebook</string>
+    <string name="feedback_button_email">E-Mail Us!</string>
+    <!-- change value below for updating the links on feedback fragment -->
+    <string name="website_link">http://www.novemberapps.com</string>
+    <string name="fb_page_address">https://www.facebook.com/novemberapps/</string>
+    <!-- Email settings you can change email address or subject below -->
+    <string name="email_address">hello@novemberapps.com</string>
+    <string name="email_subject">Temptation Live Wallpaper Feedback</string>
+
+
+    <string name="swipe_for_more">Swipe For More</string>
+
+
+    <string name="settings_upgrade">UNLOCK\nALL CONTENT?</string>
+
+
 </resources>

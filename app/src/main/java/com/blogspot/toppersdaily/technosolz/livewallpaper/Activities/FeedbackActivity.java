@@ -16,12 +16,12 @@ import java.io.IOException;
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
-public class AboutActivity extends AppCompatActivity {
+public class FeedbackActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_feedback);
         Variables.setContext(this);
 
 
@@ -36,6 +36,9 @@ public class AboutActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        /**
+         * Bottom menu buttons registered
+         */
         Button btn = (Button) findViewById(R.id.btn_apply);
         btn.setVisibility(View.GONE);
         Button btn1 = (Button) findViewById(R.id.btn_back);
@@ -44,9 +47,9 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Variables.requestNewInterstitial();
-                startActivity(new Intent(AboutActivity.this, MainActivity.class));
+                startActivity(new Intent(FeedbackActivity.this, MainActivity.class));
                 Variables.image = null;
-                AboutActivity.this.finish();
+                FeedbackActivity.this.finish();
             }
         });
         Button btn2 = (Button) findViewById(R.id.btn_settings);
@@ -54,58 +57,59 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Variables.requestNewInterstitial();
-                startActivity(new Intent(AboutActivity.this, SettingsActivity.class));
+                startActivity(new Intent(FeedbackActivity.this, SettingsActivity.class));
                 Variables.image = null;
-                AboutActivity.this.finish();
+                FeedbackActivity.this.finish();
             }
         });
 
         Button btn3 = (Button) findViewById(R.id.btn_feedback);
-        btn3.setOnClickListener(new View.OnClickListener() {
+//        btn3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Intent.ACTION_VIEW,
+//                        Uri.parse(Constants.market_uri + Constants.app_id)));
+//            }
+//        });
+//        Button btn4 = (Button) findViewById(R.id.btn_about);
+        btn3.setPressed(true);
+
+        Button btn4 = (Button) findViewById(R.id.btn_review);
+        btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Intent.ACTION_VIEW,
                         Uri.parse(Constants.market_uri + Constants.app_id)));
             }
         });
-        Button btn4 = (Button) findViewById(R.id.btn_about);
-        btn4.setPressed(true);
+
 
         Button btn5 = (Button) findViewById(R.id.btn_more);
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Variables.requestNewInterstitial();
-                startActivity(new Intent(AboutActivity.this, MoreActivity.class));
+                startActivity(new Intent(FeedbackActivity.this, MoreActivity.class));
                 Variables.image = null;
-                AboutActivity.this.finish();
+                FeedbackActivity.this.finish();
             }
         });
     }
 
-
-/*
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_back:
-                startActivity(new Intent(this, MainActivity.class));
-                AboutActivity.this.finish();
-                break;
-            case R.id.btn_settings:
-                startActivity(new Intent(this, SettingsActivity.class));
-                AboutActivity.this.finish();
-                break;
-            case R.id.btn_feedback:
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(Constants.market_uri + Constants.app_id)));
-                break;
-            case R.id.btn_more:
-                startActivity(new Intent(this, MoreActivity.class));
-                AboutActivity.this.finish();
-                break;
-
-        }
+    public void email(View v) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri data = Uri.parse("mailto:" +Constants.developer_email + "?subject=" + Constants.email_subject + "&body=");
+        intent.setData(data);
+        startActivity(intent);
     }
-*/
 
+    public void open_facebook(View v) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.fb_page_address)));
+        startActivity(browserIntent);
+    }
+
+    public void open_website(View v) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.website_link)));
+        startActivity(browserIntent);
+    }
 }

@@ -13,13 +13,11 @@ public class Constants {
     public static final String market_uri = "market://details?id=";
     public static final String developer_uri = "Zain+Aftab";
 
-    public static final String developer_email = "zkingleo2009@gmail.com";
-    public static final String developer_website = "www.technosolz.com";
+    public static final String developer_email = "hello@novemberapps.com";
+    public static final String email_subject = "Temptation Live Wallpaper Feedback";
+    public static final String developer_website = "http://www.novemberapps.com";
     public static final String developer_twitter = "https://www.twitter.com/technosolz";
-    public static final String developer_facebook = "https://www.facebook.com/technosolz";
-    public static final String developer_gplus = "https://plus.google.com/u/";
-    public static final String developer_linkedin = "https://pk.linkedin.com/in/zainaftab";
-    public static final String developer_copyright = "&copy; copyright 2016 Technosolz";
+    public static final String developer_facebook = "https://www.facebook.com/novemberapps/";
 
     public static final String more_apps_1 = "";
     public static final String more_apps_2 = "";

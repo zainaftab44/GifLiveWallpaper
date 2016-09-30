@@ -12,6 +12,21 @@
         android:fitsSystemWindows="true"
         android:scaleType="fitXY" />
 
+    <Button
+        android:id="@+id/button_upgrade"
+        android:layout_width="@dimen/feedback_button_width"
+        android:layout_height="@dimen/feedback_button_height"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rounded_btn"
+        android:drawableRight="@drawable/ic_lock"
+        android:drawableTint="@android:color/white"
+        android:onClick="upgrade"
+        android:padding="10dp"
+        android:text="@string/settings_upgrade"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:visibility="visible" />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
