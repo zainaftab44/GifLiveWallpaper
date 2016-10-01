@@ -110,7 +110,7 @@ public class MoreActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               go_back();
+                go_back();
             }
         });
         Button btn2 = (Button) findViewById(R.id.btn_settings);
@@ -127,23 +127,24 @@ public class MoreActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(Constants.market_uri + Constants.app_id)));
-            }
-        });
-        Button btn4 = (Button) findViewById(R.id.btn_about);
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 startActivity(new Intent(MoreActivity.this, FeedbackActivity.class));
                 Variables.image = null;
                 MoreActivity.this.finish();
+            }
+        });
+        Button btn4 = (Button) findViewById(R.id.btn_review);
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(Constants.market_uri + Constants.app_id)));
             }
         });
 
         Button btn5 = (Button) findViewById(R.id.btn_more);
         btn5.setPressed(true);
     }
+
     public void go_back() {
         Variables.requestNewInterstitial();
         startActivity(new Intent(MoreActivity.this, MainActivity.class));

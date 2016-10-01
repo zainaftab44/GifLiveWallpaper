@@ -58,7 +58,7 @@ public class SettingsActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               go_back();
+                go_back();
             }
         });
 
@@ -97,12 +97,14 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
     }
+
     public void go_back() {
-	 Variables.requestNewInterstitial();
-                startActivity(new Intent(SettingsActivity.this, MainActivity.class));
-                Variables.image = null;
-                SettingsActivity.this.finish();
-}
+        Variables.requestNewInterstitial();
+        startActivity(new Intent(SettingsActivity.this, MainActivity.class));
+        Variables.image = null;
+        SettingsActivity.this.finish();
+    }
+
     public void changeScale(View v) {
         // do something
         final Dialog dialog = new Dialog(this);
@@ -199,25 +201,5 @@ public class SettingsActivity extends AppCompatActivity {
         dialog.show();
 
     }
-  /*  public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_back:
-                startActivity(new Intent(this, MainActivity.class));
-                SettingsActivity.this.finish();
-                break;
-            case R.id.btn_feedback:
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(Constants.market_uri + Constants.app_id)));
-                break;
-            case R.id.btn_about:
-                startActivity(new Intent(this, FeedbackActivity.class));
-                SettingsActivity.this.finish();
-                break;
-            case R.id.btn_more:
-                startActivity(new Intent(this, MoreActivity.class));
-                SettingsActivity.this.finish();
-                break;
-        }
-    }*/
 
 }

@@ -6,10 +6,11 @@
 
     <ImageView
         android:id="@+id/load_prev_btn"
+        android:layout_width="@dimen/title_bar_icon_size"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="load_prev_image"
+        android:onClick="load_prev"
         android:src="@drawable/ic_left" />
 
     <LinearLayout
@@ -42,7 +43,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:onClick="load_next_image"
+        android:onClick="load_next"
         android:src="@drawable/ic_right" />
 
 </RelativeLayout>

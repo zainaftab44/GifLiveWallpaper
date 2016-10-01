@@ -28,7 +28,6 @@ dependencies {
     //    for gif image view
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.2'
     // for gif selection
-    //    compile 'com.github.pwittchen:swipe:0.0.1'
     compile 'com.android.support:design:24.0.0'
     //    for secure sharedpreferences
     compile 'com.pddstudio:encrypted-preferences:1.2.0'

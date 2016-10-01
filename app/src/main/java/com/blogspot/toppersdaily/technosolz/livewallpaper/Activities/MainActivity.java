@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import com.blogspot.toppersdaily.technosolz.livewallpaper.Globals.Functions;
 import com.blogspot.toppersdaily.technosolz.livewallpaper.Globals.Variables;
 import com.blogspot.toppersdaily.technosolz.livewallpaper.R;
 import com.blogspot.toppersdaily.technosolz.livewallpaper.Services.GIFWallpaperService;
+import com.github.pwittchen.swipe.library.Swipe;
+import com.github.pwittchen.swipe.library.SwipeListener;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.InterstitialAd;
 import com.pddstudio.preferences.encrypted.EncryptedPreferences;
@@ -31,10 +34,11 @@ import pl.droidsonroids.gif.GifImageView;
 public class MainActivity extends AppCompatActivity {
     EncryptedPreferences prefs;
 
-    //    private Swipe swipe;
+    private Swipe swipe;
     private GifImageView GifView;
     private Context context;
 
+    private boolean locked = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         //asset file
         try {
-            Variables.image = new GifDrawable(getAssets(), "hypno.gif");
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[0]));
             GifView.setImageDrawable(Variables.image);
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * First time preferences setup
+         */
         if (prefs.getBoolean(Constants.txtFirst, true)) {
             WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
             Display display = wm.getDefaultDisplay();
@@ -92,10 +99,14 @@ public class MainActivity extends AppCompatActivity {
                     .putInt(Constants.txtSpeed, 20)
                     .putFloat(Constants.scaleX, size.x)
                     .putFloat(Constants.scaleY, size.y)
+                    .putInt(Constants.imgNo, 0)
+                    .putString(Constants.imgName, Constants.gifs[0])
                     .commit();
         }
 
-
+        /**
+         * Bottom menu initializations
+         */
         Button btn1 = (Button) findViewById(R.id.btn_apply);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,6 +161,133 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.finish();
             }
         });
+
+
+        swipe = new Swipe();
+        swipe.addListener(new SwipeListener() {
+            @Override
+            public void onSwipingLeft(final MotionEvent event) {
+            }
+
+            @Override
+            public void onSwipedLeft(final MotionEvent event) {
+            }
+
+            @Override
+            public void onSwipingRight(final MotionEvent event) {
+            }
+
+            @Override
+            public void onSwipedRight(final MotionEvent event) {
+            }
+
+            @Override
+            public void onSwipingUp(final MotionEvent event) {
+            }
+
+            @Override
+            public void onSwipedUp(final MotionEvent event) {
+            }
+
+            @Override
+            public void onSwipingDown(final MotionEvent event) {
+            }
+
+            @Override
+            public void onSwipedDown(final MotionEvent event) {
+            }
+        });
+
+
+    }
+
+    public void load_prev(View view) {
+        swipedleft();
+    }
+
+    public void load_next(View view) {
+        swipedRight();
+    }
+
+    public void swipedleft() {
+        int num = prefs.getInt(Constants.imgNo, 0);
+        if (num < Constants.gifs.length - 1) {
+            num += 1;
+            if (locked) {
+                if (num % 2 == 1) {
+                    ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.VISIBLE);
+                } else {
+                    ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.GONE);
+                }
+            } else
+                ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.GONE);
+            prefs.edit()
+                    .putInt(Constants.imgNo, num)
+                    .putString(Constants.imgName, Constants.gifs[num])
+                    .commit();
+        } else if (num >= Constants.gifs.length - 1) {
+            num = 0;
+            ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.GONE);
+            prefs.edit()
+                    .putInt(Constants.imgNo, 0)
+                    .putString(Constants.imgName, Constants.gifs[num])
+                    .commit();
+        }
+        //Load file
+        try {
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[num]));
+            GifView.setImageDrawable(Variables.image);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void swipedRight() {
+        int num = prefs.getInt(Constants.imgNo, 0);
+        if (num > 0) {
+            num -= 1;
+            if (locked) {
+                if (num % 2 == 1) {
+                    ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.VISIBLE);
+                } else {
+                    ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.GONE);
+                }
+            } else
+                ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.GONE);
+            prefs.edit()
+                    .putInt(Constants.imgNo, num)
+                    .putString(Constants.imgName, Constants.gifs[num])
+                    .commit();
+        } else if (num <= 0) {
+            num = Constants.gifs.length - 1;
+            if (locked) {
+                if (num % 2 == 1) {
+                    ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.VISIBLE);
+                } else {
+                    ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.GONE);
+                }
+            } else
+                ((Button) findViewById(R.id.button_upgrade)).setVisibility(View.GONE);
+            prefs.edit()
+                    .putInt(Constants.imgNo, num)
+                    .putString(Constants.imgName, Constants.gifs[num])
+                    .commit();
+        }
+        //Load file
+        try {
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[num]));
+            GifView.setImageDrawable(Variables.image);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        swipe.dispatchTouchEvent(event);
+        return super.dispatchTouchEvent(event);
     }
 
 }

@@ -46,10 +46,7 @@ public class FeedbackActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Variables.requestNewInterstitial();
-                startActivity(new Intent(FeedbackActivity.this, MainActivity.class));
-                Variables.image = null;
-                FeedbackActivity.this.finish();
+                go_back();
             }
         });
         Button btn2 = (Button) findViewById(R.id.btn_settings);
@@ -64,14 +61,6 @@ public class FeedbackActivity extends AppCompatActivity {
         });
 
         Button btn3 = (Button) findViewById(R.id.btn_feedback);
-//        btn3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(Intent.ACTION_VIEW,
-//                        Uri.parse(Constants.market_uri + Constants.app_id)));
-//            }
-//        });
-//        Button btn4 = (Button) findViewById(R.id.btn_about);
         btn3.setPressed(true);
 
         Button btn4 = (Button) findViewById(R.id.btn_review);
@@ -96,9 +85,16 @@ public class FeedbackActivity extends AppCompatActivity {
         });
     }
 
+    public void go_back() {
+        Variables.requestNewInterstitial();
+        startActivity(new Intent(FeedbackActivity.this, MainActivity.class));
+        Variables.image = null;
+        FeedbackActivity.this.finish();
+    }
+
     public void email(View v) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        Uri data = Uri.parse("mailto:" +Constants.developer_email + "?subject=" + Constants.email_subject + "&body=");
+        Uri data = Uri.parse("mailto:" + Constants.developer_email + "?subject=" + Constants.email_subject + "&body=");
         intent.setData(data);
         startActivity(intent);
     }

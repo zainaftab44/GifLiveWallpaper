@@ -9,6 +9,8 @@ import pl.droidsonroids.gif.GifDrawable;
 
 /**
  * Created by omoshiroi on 9/22/16.
+ * All the global variables values are to be stored here for efficient memory usage
+ * @author Zain Aftab
  */
 public class Variables {
     private static Context context;
