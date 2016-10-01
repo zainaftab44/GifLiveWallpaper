@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.blogspot.toppersdaily.technosolz.livewallpaper.Globals.Constants;
+import com.blogspot.toppersdaily.technosolz.livewallpaper.Globals.Functions;
 import com.blogspot.toppersdaily.technosolz.livewallpaper.Globals.Variables;
 import com.blogspot.toppersdaily.technosolz.livewallpaper.R;
+import com.pddstudio.preferences.encrypted.EncryptedPreferences;
 
 import java.io.IOException;
 
@@ -17,6 +19,7 @@ import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
 public class FeedbackActivity extends AppCompatActivity {
+    EncryptedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,7 @@ public class FeedbackActivity extends AppCompatActivity {
         GifView = (GifImageView) findViewById(R.id.gifImage);
         //asset file
         try {
-            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[0]));
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[prefs.getInt(Constants.imgNo,0)]));
             GifView.setImageDrawable(Variables.image);
         } catch (IOException e) {
             e.printStackTrace();

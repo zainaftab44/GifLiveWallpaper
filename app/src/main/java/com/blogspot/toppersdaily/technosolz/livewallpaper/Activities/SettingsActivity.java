@@ -40,15 +40,22 @@ public class SettingsActivity extends AppCompatActivity {
         prefs = new EncryptedPreferences.Builder(this).withEncryptionPassword(Functions.generateKey(this)).build();
         GifImageView GifView;
 
+        if (!prefs.getBoolean(Constants.isPurchased, false)) {
+            //setup in-app purchases
+            Variables.setupIAB();
+        }
+
         GifView = (GifImageView) findViewById(R.id.gifImage);
         //asset file
         try {
-            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName,gifs[0]));
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[prefs.getInt(Constants.imgNo,0)]));
             GifView.setImageDrawable(Variables.image);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        Button btn_upgrade = (Button) findViewById(R.id.button_upgrade);
+        btn_upgrade.setVisibility((prefs.getBoolean(Constants.isPurchased, false) ? View.INVISIBLE : View.VISIBLE));
 
         Button btn = (Button) findViewById(R.id.btn_apply);
         btn.setVisibility(View.GONE);
@@ -201,4 +208,16 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!Variables.mHelper.handleActivityResult(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+
+    public void upgrade(View v) {
+        Variables.purchase(this);
+    }
 }

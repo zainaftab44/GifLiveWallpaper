@@ -25,7 +25,11 @@ public class GIFWallpaperService extends WallpaperService {
             prefs = new EncryptedPreferences.Builder(this).withEncryptionPassword(Functions.generateKey(this)).build();
 
             Movie movie = Movie.decodeStream(
-                    getResources().getAssets().open("hypno.gif"));
+                    getResources().getAssets().open(
+                            prefs.getString(
+                                    Constants.imgName,
+                                    Constants.gifs[prefs.getInt(Constants.imgNo, 0)])));
+            
             return new GIFWallpaperEngine(movie);
         } catch (IOException e) {
             Log.d("GIF", "Could not load asset");

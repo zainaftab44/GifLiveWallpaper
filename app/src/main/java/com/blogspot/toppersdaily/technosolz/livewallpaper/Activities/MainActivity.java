@@ -38,18 +38,23 @@ public class MainActivity extends AppCompatActivity {
     private GifImageView GifView;
     private Context context;
 
-    private boolean locked = true;
+    private boolean locked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // Important Initializations
         Variables.setContext(this);
         prefs = new EncryptedPreferences.Builder(this).withEncryptionPassword(Functions.generateKey(this)).build();
         context = this;
         GifView = (GifImageView) findViewById(R.id.gifImage);
 
+        locked = prefs.getBoolean(Constants.isPurchased, false);
+        if (!locked)
+            //setup in-app purchases
+            Variables.setupIAB();
 
         // Custom action bar for center title
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -58,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         //asset file
         try {
-            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[0]));
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[prefs.getInt(Constants.imgNo, 0)]));
             GifView.setImageDrawable(Variables.image);
         } catch (IOException e) {
             e.printStackTrace();
@@ -101,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     .putFloat(Constants.scaleY, size.y)
                     .putInt(Constants.imgNo, 0)
                     .putString(Constants.imgName, Constants.gifs[0])
+                    .putBoolean(Constants.isPurchased, false)
                     .commit();
         }
 
@@ -202,9 +208,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void load_prev(View view) {
-        swipedRight();    }
+        swipedRight();
+    }
 
-    public void load_next(View view) {swipedleft();
+    public void load_next(View view) {
+        swipedleft();
     }
 
     public void swipedleft() {
@@ -288,4 +296,15 @@ public class MainActivity extends AppCompatActivity {
         return super.dispatchTouchEvent(event);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!Variables.mHelper.handleActivityResult(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    public void upgrade(View v) {
+        Variables.purchase(this);
+        locked = prefs.getBoolean(Constants.isPurchased, false);
+    }
 }
