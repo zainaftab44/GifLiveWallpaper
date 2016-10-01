@@ -202,11 +202,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void load_prev(View view) {
-        swipedleft();
-    }
+        swipedRight();    }
 
-    public void load_next(View view) {
-        swipedRight();
+    public void load_next(View view) {swipedleft();
     }
 
     public void swipedleft() {

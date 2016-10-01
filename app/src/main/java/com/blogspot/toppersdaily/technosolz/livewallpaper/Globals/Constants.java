@@ -7,6 +7,8 @@ package com.blogspot.toppersdaily.technosolz.livewallpaper.Globals;
  * @author Zain Aftab
  */
 public class Constants {
+   public static final String inapp_base64_public_key="";
+
     public static final String ad_id = "";
     public static final String ad_interstitial_id = "";
     public static final String ad_banner_id = "";

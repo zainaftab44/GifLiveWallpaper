@@ -27,6 +27,9 @@ public class MoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
         Variables.setContext(this);
+        prefs = new EncryptedPreferences.Builder(this).withEncryptionPassword(Functions.generateKey(this)).build();
+
+
 
         // Custom action bar for center title
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -38,7 +41,7 @@ public class MoreActivity extends AppCompatActivity {
         GifView = (GifImageView) findViewById(R.id.gifImage);
         //asset file
         try {
-            Variables.image = new GifDrawable(getAssets(), "hypno.gif");
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[0]));
             GifView.setImageDrawable(Variables.image);
         } catch (IOException e) {
             e.printStackTrace();

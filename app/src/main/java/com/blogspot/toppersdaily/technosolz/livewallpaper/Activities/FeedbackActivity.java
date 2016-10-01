@@ -23,6 +23,7 @@ public class FeedbackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
         Variables.setContext(this);
+        prefs = new EncryptedPreferences.Builder(this).withEncryptionPassword(Functions.generateKey(this)).build();
 
 
         GifImageView GifView;
@@ -30,7 +31,7 @@ public class FeedbackActivity extends AppCompatActivity {
         GifView = (GifImageView) findViewById(R.id.gifImage);
         //asset file
         try {
-            Variables.image = new GifDrawable(getAssets(), "hypno.gif");
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[0]));
             GifView.setImageDrawable(Variables.image);
         } catch (IOException e) {
             e.printStackTrace();

@@ -37,18 +37,17 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         Variables.setContext(this);
+        prefs = new EncryptedPreferences.Builder(this).withEncryptionPassword(Functions.generateKey(this)).build();
         GifImageView GifView;
 
         GifView = (GifImageView) findViewById(R.id.gifImage);
         //asset file
         try {
-            Variables.image = new GifDrawable(getAssets(), "hypno.gif");
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName,gifs[0]));
             GifView.setImageDrawable(Variables.image);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        prefs = new EncryptedPreferences.Builder(this).withEncryptionPassword(Functions.generateKey(this)).build();
 
 
         Button btn = (Button) findViewById(R.id.btn_apply);
