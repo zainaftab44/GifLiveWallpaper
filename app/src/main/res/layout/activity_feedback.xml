@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.FeedbackActivity">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:scaleType="fitXY" />
+
+    <Button
+        android:id="@+id/btn_feedback1"
+        android:layout_width="@dimen/feedback_button_width"
+        android:layout_height="@dimen/feedback_button_height"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/feedback_btn_margin_bottom"
+        android:background="@drawable/rounded_btn"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:onClick="open_facebook"
+        android:padding="@dimen/btn_feedback_drawable_padding"
+        android:text="@string/feedback_button_facebook"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_feedback2"
+        android:layout_width="@dimen/feedback_button_width"
+        android:layout_height="@dimen/feedback_button_height"
+        android:layout_above="@id/btn_feedback1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/feedback_btn_margin_bottom"
+        android:background="@drawable/rounded_btn"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:onClick="email"
+        android:padding="@dimen/btn_feedback_drawable_padding"
+        android:text="@string/feedback_button_email"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+
+
+    <Button
+        android:id="@+id/btn_feedback3"
+        android:layout_width="@dimen/feedback_button_width"
+        android:layout_height="@dimen/feedback_button_height"
+        android:layout_below="@id/btn_feedback1"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_btn"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:onClick="open_website"
+        android:padding="@dimen/btn_feedback_drawable_padding"
+        android:textSize="@dimen/feedback_btn3_txtSize"
+        android:text="@string/feedback_button_website"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/bottom_menu" />
+    </RelativeLayout>
+</RelativeLayout>

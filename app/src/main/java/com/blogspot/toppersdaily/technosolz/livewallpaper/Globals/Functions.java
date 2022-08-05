@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.provider.Settings.Secure;
 
 import com.blogspot.toppersdaily.technosolz.livewallpaper.R;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.InterstitialAd;
 
 /**
  * Created by omoshiroi on 9/22/16.
@@ -37,6 +39,19 @@ public class Functions {
         return Constants.marker_url + Constants.app_id;
     }
 
+//    public static InterstitialAd mInterstitialAd;
+//
+//    public static void loadInterstitialAd(Context context) {
+//        mInterstitialAd = new InterstitialAd(context);
+//        mInterstitialAd.setAdUnitId(Constants.ad_interstitial_id);
+//        mInterstitialAd.setAdListener(new AdListener() {
+//            @Override
+//            public void onAdLoaded() {
+//                if (mInterstitialAd.isLoaded())//displays ad when loaded
+//                    mInterstitialAd.show();
+//            }
+//        });
+//    }
 
     /**
      * get key

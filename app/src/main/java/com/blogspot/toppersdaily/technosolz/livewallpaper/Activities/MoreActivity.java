@@ -3,14 +3,17 @@ package com.blogspot.toppersdaily.technosolz.livewallpaper.Activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.blogspot.toppersdaily.technosolz.livewallpaper.Globals.Constants;
+import com.blogspot.toppersdaily.technosolz.livewallpaper.Globals.Functions;
 import com.blogspot.toppersdaily.technosolz.livewallpaper.Globals.Variables;
 import com.blogspot.toppersdaily.technosolz.livewallpaper.R;
+import com.pddstudio.preferences.encrypted.EncryptedPreferences;
 
 import java.io.IOException;
 
@@ -20,18 +23,27 @@ import pl.droidsonroids.gif.GifImageView;
 //import in.arjsna.swipecardlib.SwipeCardView;
 
 public class MoreActivity extends AppCompatActivity {
+    EncryptedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
         Variables.setContext(this);
+        prefs = new EncryptedPreferences.Builder(this).withEncryptionPassword(Functions.generateKey(this)).build();
+
+
+        // Custom action bar for center title
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.title_remaining_activities);
+
+
         GifImageView GifView;
 
         GifView = (GifImageView) findViewById(R.id.gifImage);
         //asset file
         try {
-            Variables.image = new GifDrawable(getAssets(), "hypno.gif");
+            Variables.image = new GifDrawable(getAssets(), prefs.getString(Constants.imgName, Constants.gifs[prefs.getInt(Constants.imgNo,0)]));
             GifView.setImageDrawable(Variables.image);
         } catch (IOException e) {
             e.printStackTrace();
@@ -103,18 +115,15 @@ public class MoreActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MoreActivity.this, MainActivity.class));
-//                Variables.image.recycle();
-                Variables.image = null;
-                MoreActivity.this.finish();
+                go_back();
             }
         });
         Button btn2 = (Button) findViewById(R.id.btn_settings);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Variables.requestNewInterstitial();
                 startActivity(new Intent(MoreActivity.this, SettingsActivity.class));
-//                Variables.image.recycle();
                 Variables.image = null;
                 MoreActivity.this.finish();
             }
@@ -123,23 +132,29 @@ public class MoreActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(Constants.market_uri + Constants.app_id)));
+                startActivity(new Intent(MoreActivity.this, FeedbackActivity.class));
+                Variables.image = null;
+                MoreActivity.this.finish();
             }
         });
-        Button btn4 = (Button) findViewById(R.id.btn_about);
+        Button btn4 = (Button) findViewById(R.id.btn_review);
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MoreActivity.this, AboutActivity.class));
-//                Variables.image.recycle();
-                Variables.image = null;
-                MoreActivity.this.finish();
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(Constants.market_uri + Constants.app_id)));
             }
         });
 
         Button btn5 = (Button) findViewById(R.id.btn_more);
         btn5.setPressed(true);
+    }
+
+    public void go_back() {
+        Variables.requestNewInterstitial();
+        startActivity(new Intent(MoreActivity.this, MainActivity.class));
+        Variables.image = null;
+        MoreActivity.this.finish();
     }
 
 }
